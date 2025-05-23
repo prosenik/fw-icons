@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDISK Icon Library Preview</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            gap: 1.5rem;
+        }
+        h1 {
+            color: #001018;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            margin-bottom: 0;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 320px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            padding: 0.5rem 1.2rem;
+        }
+        .search-bar input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background: transparent;
+            padding: 0.5rem 0;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 3.2rem;
+            padding: 1.5rem 0.5rem 2.5rem 0.5rem;
+            justify-items: center;
+        }
+        .icon-card {
+            background: #fff;
+            padding: 2.1rem 1.1rem 1.5rem 1.1rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.18s, transform 0.18s;
+            position: relative;
+            min-width: 0;
+            width: 100%;
+            max-width: 140px;
+        }
+        .icon-card:hover {
+            box-shadow: 0 10px 32px rgba(0,0,0,0.14);
+            transform: translateY(-3px) scale(1.035);
+        }
+        .icon-title {
+            font-size: 0.78rem;
+            color: #555;
+            margin-bottom: 1.1rem;
+            font-weight: 400;
+            word-break: break-all;
+            letter-spacing: 0.01em;
+            opacity: 0;
+            transition: opacity 0.18s;
+            pointer-events: none;
+        }
+        .icon-card:hover .icon-title {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 1.2rem;
+        }
+        .icon-actions {
+            display: flex;
+            gap: 0.18rem;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.18s;
+            pointer-events: none;
+            margin-top: 0.2rem;
+        }
+        .icon-card:hover .icon-actions {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .icon-btn {
+            background: #f3f4f6;
+            border: none;
+            border-radius: 6px;
+            padding: 0.18rem 0.32rem;
+            cursor: pointer;
+            font-size: 0.92rem;
+            color: #3b4252;
+            transition: background 0.13s, color 0.13s;
+            display: flex;
+            align-items: center;
+            box-shadow: none;
+        }
+        .icon-btn svg {
+            display: block;
+            width: 18px;
+            height: 18px;
+        }
+        .icon-btn:hover {
+            background: #e5e7eb;
+            color: #001018;
+        }
+        .icon-btn:active {
+            background: #d1d5db;
+        }
+        .copy-success {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #4CAF50;
+            color: white;
+            padding: 0.13rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .copy-success.show {
+            opacity: 1;
+        }
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #001018;
+            color: white;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+        .status-bar .reload-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .status-bar .reload-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4CAF50;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-row">
+            <h1>FDISK Icon Library Preview</h1>
+            <div class="search-bar">
+                <input id="searchInput" type="text" placeholder="Search icons..." autocomplete="off" />
+            </div>
+        </div>
+        <div class="icon-grid">
+            <!-- Icons will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <span>Live reload enabled</span>
+        <span class="reload-indicator">Watching for changes...</span>
+    </div>
+
+    <script>
+        let allIcons = [];
+        let searchTerm = '';
+
+        async function getIcons() {
+            try {
+                const response = await fetch('/dist/iconLibrary/svg/');
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const links = Array.from(doc.querySelectorAll('a'));
+                return links
+                    .map(link => link.href)
+                    .filter(href => href.endsWith('.svg'))
+                    .map(href => href.split('/').pop().replace('.svg', ''));
+            } catch (error) {
+                console.error('Error fetching icons:', error);
+                return [];
+            }
+        }
+
+        function createIconCard(iconName) {
+            const card = document.createElement('div');
+            card.className = 'icon-card';
+
+            const name = document.createElement('div');
+            name.className = 'icon-title';
+            name.textContent = iconName;
+
+            const icon = document.createElement('img');
+            icon.className = 'icon';
+            icon.src = `/dist/iconLibrary/svg/${iconName}.svg?t=${Date.now()}`;
+            icon.alt = iconName;
+
+            const actions = document.createElement('div');
+            actions.className = 'icon-actions';
+
+            // Download button with custom SVG
+            const downloadBtn = document.createElement('button');
+            downloadBtn.className = 'icon-btn';
+            downloadBtn.title = 'Download SVG';
+            downloadBtn.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 5C11 4.44772 11.4477 4 12 4C12.5523 4 13 4.44772 13 5V12.1578L16.2428 8.91501L17.657 10.3292L12.0001 15.9861L6.34326 10.3292L7.75748 8.91501L11 12.1575V5Z" fill="currentColor"/>
+                  <path d="M4 14H6V18H18V14H20V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V14Z" fill="currentColor"/>
+                </svg>
+            `;
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.href = `/dist/iconLibrary/svg/${iconName}.svg`;
+                link.download = `${iconName}.svg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            };
+
+            // Copy sprite ID button
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'icon-btn';
+            copyBtn.title = 'Copy sprite usage code';
+            copyBtn.innerHTML = `
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="2" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 6H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 10H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 14H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            `;
+            copyBtn.onclick = async () => {
+                const code = `<svg width=\"32\" height=\"32\"><use xlink:href=\"/dist/iconLibrary/sprite/iconLibrary.svg#${iconName}\" /></svg>`;
+                try {
+                    await navigator.clipboard.writeText(code);
+                    showCopySuccess(card);
+                } catch (err) {
+                    alert('Failed to copy!');
+                }
+            };
+
+            actions.appendChild(downloadBtn);
+            actions.appendChild(copyBtn);
+
+            // Copy success message
+            const copySuccess = document.createElement('div');
+            copySuccess.className = 'copy-success';
+            copySuccess.textContent = 'Copied!';
+            card.appendChild(copySuccess);
+
+            card.appendChild(name);
+            card.appendChild(icon);
+            card.appendChild(actions);
+
+            return card;
+        }
+
+        function showCopySuccess(card) {
+            const msg = card.querySelector('.copy-success');
+            msg.classList.add('show');
+            setTimeout(() => msg.classList.remove('show'), 1200);
+        }
+
+        function renderIcons() {
+            const iconGrid = document.querySelector('.icon-grid');
+            iconGrid.innerHTML = '';
+            const filtered = allIcons.filter(iconName => iconName.toLowerCase().includes(searchTerm.toLowerCase()));
+            filtered.forEach(iconName => {
+                iconGrid.appendChild(createIconCard(iconName));
+            });
+        }
+
+        async function loadIcons() {
+            allIcons = await getIcons();
+            renderIcons();
+        }
+
+        // Live search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            renderIcons();
+        });
+
+        // Initial load
+        loadIcons();
+
+        // Check for changes every 2 seconds
+        let lastCheck = Date.now();
+        setInterval(async () => {
+            try {
+                const icons = await getIcons();
+                if (icons.length > 0) {
+                    const response = await fetch(`/dist/iconLibrary/svg/${icons[0]}.svg?t=${Date.now()}`);
+                    const lastModified = new Date(response.headers.get('last-modified')).getTime();
+                    if (lastModified > lastCheck) {
+                        loadIcons();
+                        lastCheck = Date.now();
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking for updates:', error);
+            }
+        }, 2000);
+    </script>
+</body>
+</html> 

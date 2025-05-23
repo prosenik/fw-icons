@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "iconLibrary";
+    src: url("./iconLibrary.ttf?cf4b66ab3499507300c6205c6471b4af") format("truetype"),
+url("./iconLibrary.woff?cf4b66ab3499507300c6205c6471b4af") format("woff"),
+url("./iconLibrary.woff2?cf4b66ab3499507300c6205c6471b4af") format("woff2");
+}
+
+[class^="stellaeIcon-"], [class*=" stellaeIcon-"] {
+    display: inline-flex;
+    align-items: center;
+}
+
+[class^="stellaeIcon-"]:before, [class*=" stellaeIcon-"]:before {
+    font-family: iconLibrary !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.stellaeIcon-search:before {
+    content: "\f101";
+}
+.stellaeIcon-zoom-out-line:before {
+    content: "\f102";
+}
