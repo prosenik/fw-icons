@@ -1,21 +1,14 @@
-# `@FDISK-next/icon-library`
+# `@FW/icon-library`
 
-> FDISK Design System - Foundation icons library
+> FW Design System - Foundation icons library
 
 ## Install package
 
-After installing [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/en/docs/install), you can install `@FDISK-next/icon-library` with this command:
-
-```sh
-# with npm
-npm i -S @FDISK-next/icon-library
-
-
-```
+TO BE ADDED
 
 ## Usage
 
-Once you have installed this package, depending on your setup, you can include `@FDISK-next/icon-library` in a handful of ways.
+Once you have installed this package, depending on your setup, you can include `@VERA/icon-library` in a handful of ways.
 
 - Reference via `<img>` element
 - Use the SVG sprite
@@ -32,7 +25,7 @@ Reference Icons SVGs like normal images with the `<img>` element.
 
 ```html
 <img
-  src="/node_modules/@FDISK-next/icon-library/dist/FDISK-icon-library/svg/home-fill.svg"
+  src="/node_modules/@VERA/icon-library/dist/FDISK-icon-library/svg/home-fill.svg"
   alt="Home icon filled"
   width="32"
   height="32"
@@ -46,14 +39,14 @@ Use the SVG sprite to insert any icon through the `<use>` element. Use the iconâ
 ```html
 <svg width="32" height="32" fill="#001018">
   <use
-    xlink:href="/node_modules/@FDISK-next/icon-library/dist/FDISK-icon-library/sprite/FDISK-icon-library.svg#home-fill"
+    xlink:href="/node_modules/@VERA/icon-library/dist/FDISK-icon-library/sprite/FDISK-icon-library.svg#home-fill"
   />
 </svg>
 ```
 
 ### Icon font
 
-Icon fonts with classes for every icon are also included. Include the icon web fonts in your page via CSS (`./node_modules/@FDISK-next/icon-library/dist/FDISK-icon-library/font/FDISK-icon-library.css`), then reference the class names as needed (e.g. `FDISK-icon-library-home-fill` for the `home-fill` icon) in your HTML.
+Icon fonts with classes for every icon are also included. Include the icon web fonts in your page via CSS (`./node_modules/@VERA/icon-library/dist/FDISK-icon-library/font/FDISK-icon-library.css`), then reference the class names as needed (e.g. `FDISK-icon-library-home-fill` for the `home-fill` icon) in your HTML.
 
 Use `font-size` and `color` to change the icon appearance.
 
@@ -102,7 +95,3 @@ Embed your icons within the HTML of your page (as opposed to an external image f
   />
 </svg>
 ```
-# fw-icons
-# fw-icons
-# fw-icons
-# fw-icons
