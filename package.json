@@ -1,6 +1,6 @@
 {
-  "name": "@stellaestudio/FW-icon-library",
-  "version": "0.0.0",
+  "name": "@stellaestudio/fw-icon-library",
+  "version": "1.0.0",
   "description": "FWIcon - A comprehensive icon library with fonts, SVGs, and sprites",
   "main": "dist/iconLibrary/font/iconLibrary.ts",
   "types": "dist/iconLibrary/font/iconLibrary.ts",
@@ -16,13 +16,13 @@
   ],
   "license": "Apache-2.0",
   "author": "Stellae Studio",
-  "homepage": "https://github.com/stellaestudio/FW-icon-library#readme",
+  "homepage": "https://github.com/stellaestudio/fw-icon-library#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stellaestudio/FW-icon-library.git"
+    "url": "git+https://github.com/stellaestudio/fw-icon-library.git"
   },
   "bugs": {
-    "url": "https://github.com/stellaestudio/FW-icon-library/issues"
+    "url": "https://github.com/stellaestudio/fw-icon-library/issues"
   },
   "files": [
     "dist",
