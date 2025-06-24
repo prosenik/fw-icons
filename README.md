@@ -1,97 +1,95 @@
-# `@FW/icon-library`
+# @stellaestudio/FW-icon-library
 
-> FW Design System - Foundation icons library
+A comprehensive icon library with fonts, SVGs, and sprites by Stellae Studio.
 
-## Install package
+## Installation
 
-TO BE ADDED
+```bash
+npm install @stellaestudio/FW-icon-library
+```
 
 ## Usage
 
-Once you have installed this package, depending on your setup, you can include `@VERA/icon-library` in a handful of ways.
+### Icon Font
 
-- Reference via `<img>` element
-- Use the SVG sprite
-- Use the icon font
-- Include via CSS
-- Copy-paste SVGs as embedded HTML
-
-Foundation icons gives you SVGs, so you can include them into your HTML in a few ways depending on how your project is setup.
-Our icons include a `width` and `height` of `16px` by default to allow for easy resizing via `font-size`.
-
-### External image
-
-Reference Icons SVGs like normal images with the `<img>` element.
+Import the CSS file and use the icon classes:
 
 ```html
-<img
-  src="/node_modules/@VERA/icon-library/dist/FDISK-icon-library/svg/home-fill.svg"
-  alt="Home icon filled"
-  width="32"
-  height="32"
-/>
+<!-- Import the CSS -->
+<link rel="stylesheet" href="node_modules/@stellaestudio/FW-icon-library/dist/iconLibrary/font/iconLibrary.css">
+
+<!-- Use icons -->
+<i class="fwIcon fwIcon-arrow-left"></i>
+<i class="fwIcon fwIcon-search"></i>
+<i class="fwIcon fwIcon-heart"></i>
 ```
 
-### Sprite
+### TypeScript/JavaScript
 
-Use the SVG sprite to insert any icon through the `<use>` element. Use the icon’s filename as the fragment identifier (e.g., `home-fill` is `#home-fill`). SVG sprites allow you to reference an external file similar to an `<img>` element.
+```typescript
+import { iconLibrary } from '@stellaestudio/FW-icon-library';
+
+// Access icon codes
+console.log(iconLibrary.ARROW_LEFT); // Gets the unicode value
+```
+
+### SVG Usage
+
+Direct SVG files are available in the `dist/iconLibrary/svg/` directory:
 
 ```html
-<svg width="32" height="32" fill="#001018">
-  <use
-    xlink:href="/node_modules/@VERA/icon-library/dist/FDISK-icon-library/sprite/FDISK-icon-library.svg#home-fill"
-  />
+<img src="node_modules/@stellaestudio/FW-icon-library/dist/iconLibrary/svg/arrow-left.svg" alt="Arrow Left">
+```
+
+### SVG Sprite
+
+Use the sprite for optimized loading:
+
+```html
+<svg>
+  <use href="node_modules/@stellaestudio/FW-icon-library/dist/iconLibrary/sprite/iconLibrary.svg#arrow-left"></use>
 </svg>
 ```
 
-### Icon font
+## Available Icons
 
-Icon fonts with classes for every icon are also included. Include the icon web fonts in your page via CSS (`./node_modules/@VERA/icon-library/dist/FDISK-icon-library/font/FDISK-icon-library.css`), then reference the class names as needed (e.g. `FDISK-icon-library-home-fill` for the `home-fill` icon) in your HTML.
+The library includes 40+ icons:
+- Arrow icons (left, right, up, down)
+- UI elements (buttons, checks, crosses)
+- Navigation (hamburger, search, home)
+- Actions (edit, delete, favorite)
+- And many more...
 
-Use `font-size` and `color` to change the icon appearance.
+## File Structure
 
-If your icon is followed by a text:
-
-```html
-<span aria-hidden="true" class="FDISK-icon-library-home-fill"> </span> Homepage
+```
+dist/
+├── iconLibrary/
+│   ├── font/           # Font files and CSS
+│   │   ├── iconLibrary.css
+│   │   ├── iconLibrary.ttf
+│   │   ├── iconLibrary.woff
+│   │   ├── iconLibrary.woff2
+│   │   ├── iconLibrary.ts
+│   │   ├── iconLibrary.json
+│   │   └── iconLibrary.html
+│   ├── svg/            # Individual SVG files
+│   └── sprite/         # SVG sprite
+│       └── iconLibrary.svg
 ```
 
-If your icon is alone:
+## Development
 
-```html
-<span aria-label="Homepage" class="FDISK-icon-library-home-fill"> </span>
+To build the library locally:
+
+```bash
+npm run build
 ```
 
-### CSS
+## License
 
-You can also use the SVG within your CSS (**be sure to escape any characters**, such as `#` to `%23` when specifying hex color values). When no dimensions are specified via `width` and `height` on the `<svg>`, the icon will fill the available space.
+Apache-2.0
 
-The `viewBox` attribute is required if you wish to resize icons with `background-size`. Note that the `xmlns` attribute is required.
+## Author
 
-```css
-.your-class {
-  content: "";
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.333 7.333v-4h1.334v4h4v1.334h-4v4H7.333v-4h-4V7.333h4Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 1rem 1rem;
-}
-```
-
-### Embedded
-
-Embed your icons within the HTML of your page (as opposed to an external image file, not really recommended). Here we’ve used a custom `width` and `height` alongside `viewbox`.
-
-```html
-<svg
-  width="16"
-  height="16"
-  fill="#001018"
-  viewBox="0 0 16 16"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M7.333 7.333v-4h1.334v4h4v1.334h-4v4H7.333v-4h-4V7.333h4z"
-    fill="#001018"
-  />
-</svg>
-```
+Stellae Studio

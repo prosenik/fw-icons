@@ -1,16 +1,33 @@
 {
   "name": "@stellaestudio/FW-icon-library",
   "version": "0.0.0",
-  "description": "FWIcon",
+  "description": "FWIcon - A comprehensive icon library with fonts, SVGs, and sprites",
+  "main": "dist/iconLibrary/font/iconLibrary.ts",
+  "types": "dist/iconLibrary/font/iconLibrary.ts",
   "keywords": [
     "design-system",
     "ui-kit",
     "libraries",
-    "icons"
+    "icons",
+    "icon-font",
+    "svg",
+    "stellae",
+    "fw-icon"
   ],
   "license": "Apache-2.0",
+  "author": "Stellae Studio",
+  "homepage": "https://github.com/stellaestudio/FW-icon-library#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stellaestudio/FW-icon-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stellaestudio/FW-icon-library/issues"
+  },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "prebuild": "shx rm -rf dist",
@@ -20,14 +37,17 @@
     "build:svg": "node src/scripts/build-svg.js && svgo -f dist/iconLibrary/svg",
     "prestart": "npm run build",
     "start": "concurrently \"chokidar \\\"src/iconLibrary/**/*.svg\\\" -c \\\"npm run build\\\"\" \"node preview-server.js\"",
-    "preview": "node preview-server.js"
+    "preview": "node preview-server.js",
+    "prepublishOnly": "npm run build",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@babel/core": "^7.17.12",
     "babel-loader": "^8.0.0",
     "chokidar-cli": "^3.0.0",
     "concurrently": "^8.2.2",
-        "express": "^4.18.2",
+    "express": "^4.18.2",
     "fantasticon": "^1.1.1",
     "fs-extra": "^10.0.0",
     "react": "^18.0.2",

@@ -5,12 +5,12 @@ url("./iconLibrary.woff?70a40877ef5f18bc4c12c704d3a802d9") format("woff"),
 url("./iconLibrary.woff2?70a40877ef5f18bc4c12c704d3a802d9") format("woff2");
 }
 
-[class^="VeraIcon-"], [class*=" VeraIcon-"] {
+[class^="fwIcon-"], [class*=" fwIcon-"] {
     display: inline-flex;
     align-items: center;
 }
 
-[class^="VeraIcon-"]:before, [class*=" VeraIcon-"]:before {
+[class^="fwIcon-"]:before, [class*=" fwIcon-"]:before {
     font-family: iconLibrary !important;
     font-style: normal;
     font-weight: normal !important;
@@ -21,123 +21,123 @@ url("./iconLibrary.woff2?70a40877ef5f18bc4c12c704d3a802d9") format("woff2");
     -moz-osx-font-smoothing: grayscale;
 }
 
-.VeraIcon-align-right:before {
+.fwIcon-align-right:before {
     content: "\f101";
 }
-.VeraIcon-align-top:before {
+.fwIcon-align-top:before {
     content: "\f102";
 }
-.VeraIcon-apple-watch:before {
+.fwIcon-apple-watch:before {
     content: "\f103";
 }
-.VeraIcon-arrow-left:before {
+.fwIcon-arrow-left:before {
     content: "\f104";
 }
-.VeraIcon-arrow-long-down-l:before {
+.fwIcon-arrow-long-down-l:before {
     content: "\f105";
 }
-.VeraIcon-arrow-long-up-c:before {
+.fwIcon-arrow-long-up-c:before {
     content: "\f106";
 }
-.VeraIcon-arrow-top-right-r:before {
+.fwIcon-arrow-top-right-r:before {
     content: "\f107";
 }
-.VeraIcon-arrows-expand-left-alt:before {
+.fwIcon-arrows-expand-left-alt:before {
     content: "\f108";
 }
-.VeraIcon-arrows-shrink-h:before {
+.fwIcon-arrows-shrink-h:before {
     content: "\f109";
 }
-.VeraIcon-assign:before {
+.fwIcon-assign:before {
     content: "\f10a";
 }
-.VeraIcon-bag:before {
+.fwIcon-bag:before {
     content: "\f10b";
 }
-.VeraIcon-button-arrow-down:before {
+.fwIcon-button-arrow-down:before {
     content: "\f10c";
 }
-.VeraIcon-button-arrow-left:before {
+.fwIcon-button-arrow-left:before {
     content: "\f10d";
 }
-.VeraIcon-button-arrow-right:before {
+.fwIcon-button-arrow-right:before {
     content: "\f10e";
 }
-.VeraIcon-button-plus:before {
+.fwIcon-button-plus:before {
     content: "\f10f";
 }
-.VeraIcon-check-square:before {
+.fwIcon-check-square:before {
     content: "\f110";
 }
-.VeraIcon-check:before {
+.fwIcon-check:before {
     content: "\f111";
 }
-.VeraIcon-cloud:before {
+.fwIcon-cloud:before {
     content: "\f112";
 }
-.VeraIcon-cross:before {
+.fwIcon-cross:before {
     content: "\f113";
 }
-.VeraIcon-delete-trash:before {
+.fwIcon-delete-trash:before {
     content: "\f114";
 }
-.VeraIcon-dot:before {
+.fwIcon-dot:before {
     content: "\f115";
 }
-.VeraIcon-edit:before {
+.fwIcon-edit:before {
     content: "\f116";
 }
-.VeraIcon-favorite:before {
+.fwIcon-favorite:before {
     content: "\f117";
 }
-.VeraIcon-file:before {
+.fwIcon-file:before {
     content: "\f118";
 }
-.VeraIcon-folder-add:before {
+.fwIcon-folder-add:before {
     content: "\f119";
 }
-.VeraIcon-folder-remove:before {
+.fwIcon-folder-remove:before {
     content: "\f11a";
 }
-.VeraIcon-gear:before {
+.fwIcon-gear:before {
     content: "\f11b";
 }
-.VeraIcon-google:before {
+.fwIcon-google:before {
     content: "\f11c";
 }
-.VeraIcon-hallow:before {
+.fwIcon-hallow:before {
     content: "\f11d";
 }
-.VeraIcon-hamburger:before {
+.fwIcon-hamburger:before {
     content: "\f11e";
 }
-.VeraIcon-heart-filled:before {
+.fwIcon-heart-filled:before {
     content: "\f11f";
 }
-.VeraIcon-heart:before {
+.fwIcon-heart:before {
     content: "\f120";
 }
-.VeraIcon-home-house:before {
+.fwIcon-home-house:before {
     content: "\f121";
 }
-.VeraIcon-line:before {
+.fwIcon-line:before {
     content: "\f122";
 }
-.VeraIcon-percent:before {
+.fwIcon-percent:before {
     content: "\f123";
 }
-.VeraIcon-person:before {
+.fwIcon-person:before {
     content: "\f124";
 }
-.VeraIcon-printer:before {
+.fwIcon-printer:before {
     content: "\f125";
 }
-.VeraIcon-profile:before {
+.fwIcon-profile:before {
     content: "\f126";
 }
-.VeraIcon-search:before {
+.fwIcon-search:before {
     content: "\f127";
 }
-.VeraIcon-zoom-out-line:before {
+.fwIcon-zoom-out-line:before {
     content: "\f128";
 }
